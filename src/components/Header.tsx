@@ -1,24 +1,23 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
-import { LogIn, UserPlus } from "lucide-react";
+import { LogIn, Menu, UserPlus } from "lucide-react";
 import icon from "../assets/iconnew.png";
+import { NAVIGATION } from "../constants/navigation";
 
-
-const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/events", label: "Events" },
-  { to: "/testimonials", label: "Testimonials" },
-  { to: "/about", label: "About" },
-];
 
 export function Header() {
   const location = useLocation();
   const pathname = location.pathname;
 
   return (
-    <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-      <Link to="/" className="flex items-center gap-3">
-        <div className="h-14 w-14 rounded-full overflow-hidden bg-brand/10 flex-shrink-0">
+    <header className="sticky top-0 z-50">
+      <div className="bg-gradient-to-r
+        from-[#081B4B]
+        via-[#0F2F73]
+        to-[#145DA0]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+          <Link to="/" className="flex items-center gap-3">
+        <div className="h-14 w-14 rounded-full overflow-hidden bg-white ring-2 ring-white/20 shadow-lg flex-shrink-0">
           <img
             src={icon}
             alt="IRIS Academy"
@@ -27,10 +26,10 @@ export function Header() {
         </div>
 
       <div className="leading-none">
-        <div className="text-2xl font-extrabold tracking-tight text-brand-dark">
+        <div className="text-2xl font-extrabold tracking-tight text-white">
           IRIS
         </div>
-        <div className="text-[10px] font-semibold tracking-[0.25em] text-brand-dark/80">
+        <div className="text-[10px] font-semibold tracking-[0.25em] text-white/80">
           ACADEMY
         </div>
       </div>
@@ -38,7 +37,7 @@ export function Header() {
 
       {/* Desktop Nav */}
       <nav className="hidden items-center gap-8 lg:gap-12 md:flex">
-        {navLinks.map((link) => {
+        {NAVIGATION.map((link) => {
           const isActive = pathname === link.to;
           return (
             <Link
@@ -46,13 +45,13 @@ export function Header() {
               to={link.to}
               className={`relative text-base font-medium transition-colors ${
                 isActive
-                  ? "font-semibold text-brand"
-                  : "text-brand-dark/80 hover:text-brand"
+                  ? "font-semibold text-[#FFD54F]"
+                  : "text-white/80 hover:text-white"
               }`}
             >
               {link.label}
               {isActive && (
-                <span className="absolute -bottom-2 left-0 h-0.5 w-full rounded bg-brand" />
+                <span className="absolute -bottom-2 left-0 h-0.5 w-full rounded bg-[#FFD54F]" />
               )}
             </Link>
           );
@@ -61,10 +60,25 @@ export function Header() {
 
       {/* Desktop Auth */}
       <div className="hidden items-center gap-3 md:flex">
-        <button className="inline-flex items-center gap-2 rounded-lg border border-brand px-5 py-2 text-sm font-semibold text-brand transition hover:bg-brand/5">
+        <button className="inline-flex items-center gap-2
+        rounded-xl
+        border border-white/30
+        px-5 py-2
+        text-sm font-semibold
+        text-white
+        hover:bg-white/10
+        transition">
           Login <LogIn className="h-4 w-4" />
         </button>
-        <button className="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2 text-sm font-semibold text-brand-foreground transition hover:bg-brand/90">
+        <button className="inline-flex items-center gap-2
+        rounded-xl
+        bg-[#FFD54F]
+        px-5 py-2
+        text-sm font-semibold
+        text-[#0B1630]
+        shadow-lg
+        hover:bg-[#FFCA28]
+        transition">
           Sign Up <UserPlus className="h-4 w-4" />
         </button>
       </div>
@@ -72,14 +86,14 @@ export function Header() {
       {/* Mobile Menu */}
       <Sheet>
         <SheetTrigger asChild>
-          <button className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand/30 text-brand md:hidden">
-            <menu className="h-5 w-5" />
+          <button className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-brand/30 bg-[#FFD54F] text-brand hover:bg-[#FFCA28] md:hidden">
+            <Menu className="h-5 w-5" />
           </button>
         </SheetTrigger>
         <SheetContent side="right" className="w-[280px] bg-card p-6">
           <div className="flex flex-col gap-6 pt-8">
             <nav className="flex flex-col gap-4">
-              {navLinks.map((link) => {
+              {NAVIGATION.map((link) => {
                 const isActive = pathname === link.to;
                 return (
                   <SheetClose asChild key={link.to}>
@@ -109,6 +123,9 @@ export function Header() {
           </div>
         </SheetContent>
       </Sheet>
+        </div>
+      </div>
+      
     </header>
   );
 }

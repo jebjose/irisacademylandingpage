@@ -1,14 +1,66 @@
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
-import { QueryClient } from '@tanstack/react-query'
+import { createRootRouteWithContext, HeadContent, Link, Outlet } from '@tanstack/react-router'
 import { Toaster } from 'sonner'
+import { Header } from '../components/Header'
+import { ErrorState } from '../components/common/ErrorState';
+import { Footer } from '../components/Footer';
 
-export const Route = createRootRouteWithContext<{
-  queryClient: QueryClient
-}>()({
-  component: () => (
-    <>
-      <Outlet />
-      <Toaster richColors />
+
+function RootLayout() {
+  return (
+     <>        
+          <Outlet />
+          <Toaster richColors />
+
     </>
-  ),
+  )
+}
+
+function RootErrorComponent({
+  error,
+}:{
+  error: Error;
+}) {
+  console.error(error);
+
+  return (
+    <>
+
+        <ErrorState
+          title="Something went wrong"
+          description="Please refresh the page or try again later."
+          action={
+            <button
+              onClick={() => window.location.reload()}
+              className="rounded-full bg-brand px-5 py-2.5 font-medium text-white transition hover:bg-brand/90"
+            >
+              Refresh Page
+            </button>
+          }
+        />
+
+    </>
+  )
+}
+
+function NotFoundComponent() {
+  return (
+    <ErrorState
+      title="Page Not Found"
+      description="Sorry, we couldn't find the page you're looking for."
+      action={
+        <Link
+          to="/"
+          className="inline-flex items-center rounded-full bg-brand px-5 py-2.5 font-medium text-white transition hover:bg-brand/90"
+        >
+          Go Home
+        </Link>
+      }
+    />
+  );
+}
+
+export const Route = createRootRouteWithContext()({
+  component: RootLayout,
+  errorComponent: RootErrorComponent,
+  notFoundComponent: NotFoundComponent
 })
