@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicTestimonialsRouteImport } from './routes/_public/testimonials'
@@ -20,11 +19,6 @@ import { Route as PublicAboutRouteImport } from './routes/_public/about'
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoursesRoute = CoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicRoute = PublicRouteImport.update({
@@ -54,14 +48,12 @@ const PublicAboutRoute = PublicAboutRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof PublicIndexRoute
-  '/courses': typeof CoursesRoute
   '/login': typeof LoginRoute
   '/about': typeof PublicAboutRoute
   '/events': typeof PublicEventsRoute
   '/testimonials': typeof PublicTestimonialsRoute
 }
 export interface FileRoutesByTo {
-  '/courses': typeof CoursesRoute
   '/login': typeof LoginRoute
   '/about': typeof PublicAboutRoute
   '/events': typeof PublicEventsRoute
@@ -71,7 +63,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_public': typeof PublicRouteWithChildren
-  '/courses': typeof CoursesRoute
   '/login': typeof LoginRoute
   '/_public/about': typeof PublicAboutRoute
   '/_public/events': typeof PublicEventsRoute
@@ -80,19 +71,12 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/courses'
-    | '/login'
-    | '/about'
-    | '/events'
-    | '/testimonials'
+  fullPaths: '/' | '/login' | '/about' | '/events' | '/testimonials'
   fileRoutesByTo: FileRoutesByTo
-  to: '/courses' | '/login' | '/about' | '/events' | '/testimonials' | '/'
+  to: '/login' | '/about' | '/events' | '/testimonials' | '/'
   id:
     | '__root__'
     | '/_public'
-    | '/courses'
     | '/login'
     | '/_public/about'
     | '/_public/events'
@@ -102,7 +86,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   PublicRoute: typeof PublicRouteWithChildren
-  CoursesRoute: typeof CoursesRoute
   LoginRoute: typeof LoginRoute
 }
 
@@ -113,13 +96,6 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/courses': {
-      id: '/courses'
-      path: '/courses'
-      fullPath: '/courses'
-      preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_public': {
@@ -179,7 +155,6 @@ const PublicRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   PublicRoute: PublicRouteWithChildren,
-  CoursesRoute: CoursesRoute,
   LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport

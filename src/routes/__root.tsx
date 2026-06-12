@@ -1,8 +1,6 @@
-import { createRootRouteWithContext, HeadContent, Link, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Link, Outlet } from '@tanstack/react-router'
 import { Toaster } from 'sonner'
-import { Header } from '../components/Header'
 import { ErrorState } from '../components/common/ErrorState';
-import { Footer } from '../components/Footer';
 
 
 function RootLayout() {

@@ -3,6 +3,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
 import { LogIn, Menu, UserPlus } from "lucide-react";
 import icon from "../assets/iconnew.png";
 import { NAVIGATION } from "../constants/navigation";
+import type { LINKS } from "@/constants/links";
 
 
 export function Header() {
@@ -60,7 +61,11 @@ export function Header() {
 
       {/* Desktop Auth */}
       <div className="hidden items-center gap-3 md:flex">
-        <button className="inline-flex items-center gap-2
+        <a
+        href="https://irisacademyonline.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2
         rounded-xl
         border border-white/30
         px-5 py-2
@@ -69,8 +74,12 @@ export function Header() {
         hover:bg-white/10
         transition">
           Login <LogIn className="h-4 w-4" />
-        </button>
-        <button className="inline-flex items-center gap-2
+        </a>
+        <a
+        href="https://irisacademyonline.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2
         rounded-xl
         bg-[#FFD54F]
         px-5 py-2
@@ -80,7 +89,7 @@ export function Header() {
         hover:bg-[#FFCA28]
         transition">
           Sign Up <UserPlus className="h-4 w-4" />
-        </button>
+        </a>
       </div>
 
       {/* Mobile Menu */}
@@ -113,9 +122,14 @@ export function Header() {
             </nav>
             <div className="h-px bg-border" />
             <div className="flex flex-col gap-3">
-              <button className="inline-flex items-center justify-center gap-2 rounded-lg border border-brand px-5 py-2.5 text-sm font-semibold text-brand transition hover:bg-brand/5">
+              <a
+                href= "https://irisacademyonline.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-brand px-5 py-2.5 text-sm font-semibold text-brand transition hover:bg-brand/5"
+              >
                 Login <LogIn className="h-4 w-4" />
-              </button>
+              </a>
               <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition hover:bg-brand/90">
                 Sign Up <UserPlus className="h-4 w-4" />
               </button>
