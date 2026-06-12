@@ -5,7 +5,7 @@ import { HeroSection } from '../../components/sections/HeroSection';
 import { FeaturedCoursesSection } from '../../components/sections/FeaturedCoursesSection';
 
 export const Route = createFileRoute('/_public/')({
-     head: () => createSeo(SEO.HOME),
+    head: () => createSeo(SEO.HOME),
     component: Index,
 })
 

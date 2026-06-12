@@ -1,11 +1,14 @@
 import { createRootRouteWithContext, Link, Outlet } from '@tanstack/react-router'
 import { Toaster } from 'sonner'
 import { ErrorState } from '../components/common/ErrorState';
+import { HeadContent } from '@tanstack/react-router';
 
 
 function RootLayout() {
   return (
-     <>        
+     <>   
+
+          <HeadContent/>
           <Outlet />
           <Toaster richColors />
 
