@@ -6,8 +6,8 @@ import heroStudent from "@/assets/herostd.png";
 
 export function HeroSection(){
     return(
-        <section className="bg-gradient-to-b from-hero-from to-hero-to">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-12 md:py-20 lg:grid-cols-2">
+        <section className="bg-gradient-to-b from-hero-from to-hero-to min-h-[calc(100vh-80px)]">
+        <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-2">
           {/* Left */}
           <div className="flex flex-col">
             <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">
@@ -70,9 +70,9 @@ export function HeroSection(){
           </div>
 
           {/* Right */}
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center lg:-translate-y-6">
             <div className="absolute -right-6 -top-6 hidden h-72 w-72 rounded-full bg-brand/10 blur-3xl md:block" />
-            <div className="relative aspect-square w-full max-w-[520px] overflow-hidden rounded-[40%_60%_55%_45%/55%_45%_55%_45%] shadow-2xl ring-1 ring-black/5">
+            <div className="relative aspect-square w-full max-w-[440px] overflow-hidden rounded-[40%_60%_55%_45%/55%_45%_55%_45%] shadow-2xl ring-1 ring-black/5">
               <img
                 src={heroStudent}
                 alt="Iris Academy student"

@@ -11,11 +11,11 @@ export function Header() {
   const pathname = location.pathname;
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky top-0 z-50 backdrop-blur-md">
       <div className="bg-gradient-to-r
-        from-[#081B4B]
-        via-[#0F2F73]
-        to-[#145DA0]">
+        from-[#081B4B]/80
+        via-[#0F2F73]/80
+        to-[#145DA0]/80">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <Link to="/" className="flex items-center gap-3">
         <div className="h-14 w-14 rounded-full overflow-hidden bg-white ring-2 ring-white/20 shadow-lg flex-shrink-0">
